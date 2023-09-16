@@ -81,7 +81,7 @@ module.exports = class WSS {
 						wss.broadcast(data);
 					}
 
-					ErrorHandler.insert(data, data);
+					RecordLogHandler.insert(data, data);
 				});
 
 				ws.on("close", function close() {
