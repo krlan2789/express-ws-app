@@ -1,6 +1,14 @@
 # 1. Express WebSocket App
 
-## 1.1. **Installation**
+## 1.1. **Specs**
+
+- NodeJS `16.20.0`
+- NPM `8.19.4`
+- ExpressJS `4.17.1`
+- NodeJS WebSocket Library `8.2.3`
+- PostgreSQL `12.14`
+
+## 1.2. **Installation**
 
 1. Switch to the project directory :
 
@@ -16,7 +24,7 @@
    $ npm i
    ```
 
-## 1.2. **Database Configuration**
+## 1.3. **Database Configuration**
 
 1. Duplicate the `.env_example` file then rename it to `.env`.
 2. Change the value as needed.
@@ -31,7 +39,7 @@
    CONNECTION_PORT=8765 # node.js app port
    ```
 
-## 1.3. **Running Applications**
+## 1.4. **Running Applications**
 
 1. Switch to the project directory :
 
