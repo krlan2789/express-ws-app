@@ -16,7 +16,7 @@
    $ cd express-wss-app
    ```
 
-2. Install dependecies :
+2. Install dependencies :
 
    ```console
    $ npm install
@@ -26,8 +26,8 @@
 
 ## 1.3. **Database Configuration**
 
-1. Duplicate the `.env_example` file then rename it to `.env`.
-2. Change the value as needed.
+1. Duplicate the `.env_example` or create new file, then rename it to `.env`.
+2. Change the value as needed :
 
    ```ini
    DB_HOST=localhost # database hostname or ip
