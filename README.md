@@ -50,3 +50,5 @@
    ```console
    $ npm start
    ```
+
+4. Open browesr use websocket tester tools, then fill in the url with `ws://localhost:8765?token=user_token`.
