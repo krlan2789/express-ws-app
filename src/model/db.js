@@ -19,8 +19,9 @@ class DB {
 		return Promise.resolve(data);
 	}
 
-	async query(query, values) {
-		return await this.client.query(query, values);
+	async query(query, values = null) {
+		if (values != null) return await this.client.query(query, values);
+		else return await this.client.query(query);
 	}
 }
 

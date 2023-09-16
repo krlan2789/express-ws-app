@@ -10,8 +10,9 @@ module.exports = class ModelUsers {
 	 */
 	static async isVerified(token) {
 		const query = `SELECT token FROM tb_token WHERE token='${token}'`;
-
-		const result = (await DB.query(query, values)).rows;
-		return result;
+		console.log(query);
+		const result = (await DB.query(query)).rows;
+		console.log(result);
+		return result.length > 0;
 	}
 };

@@ -8,6 +8,7 @@ const { writeFile } = require("fs");
 const ErrorHandler = require("./helper/error_handler");
 const RecordLogHandler = require("./helper/record_log_handler");
 const DateHelper = require("./helper/date_helper");
+const ModelUsers = require("./model/m_users");
 
 module.exports = class WSS {
 	create() {
@@ -41,17 +42,27 @@ module.exports = class WSS {
 			});
 		};
 
-		wss.on("connection", function connection(ws, req) {
+		wss.on("connection", async function connection(ws, req) {
 			try {
 				const [_path, params] = req.url.split("?");
 				const connParams = parse(params);
-				const userId = connParams.id;
+				const token = connParams.token;
 
-				console.log(`client ${userId} joined.`);
+				const isVerified = await ModelUsers.isVerified(token);
+
+				if (!isVerified) {
+					console.log("not_verified_user: " + token);
+					ErrorHandler.insert("not_verified_user", token);
+					ws.send("you are not permitted to use this feature");
+					ws.close();
+					return;
+				}
+
+				console.log(`client ${token} joined.`);
 				console.log(connParams.data);
-				wss.broadcast(`client ${userId} joined.`);
+				wss.broadcast(`client ${token} joined.`);
 
-				mapConnectedIp.set(userId, ws);
+				mapConnectedIp.set(token, ws);
 
 				ws.on("error", (err) => {
 					ErrorHandler.insert(err.name, err.message);
@@ -74,9 +85,9 @@ module.exports = class WSS {
 				});
 
 				ws.on("close", function close() {
-					mapConnectedIp.delete(userId);
-					console.log(`client ${userId} left.`);
-					wss.broadcast(`client ${userId} left.`);
+					mapConnectedIp.delete(token);
+					console.log(`client ${token} left.`);
+					wss.broadcast(`client ${token} left.`);
 				});
 			} catch (e) {
 				ErrorHandler.insert(e.name, e.message);
