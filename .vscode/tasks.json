@@ -1,0 +1,92 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "cd",
+			"type": "shell",
+			"command": "cd",
+			"args": ["\"${workspaceFolder}\""]
+		},
+		{
+			"label": "Clear Screen",
+			"type": "shell",
+			"command": "cls"
+		},
+		{
+			"label": "Delete Folder If Exist",
+			"type": "shell",
+			"command": "(if exist ${input:fileName} rmdir /Q /S ${input:fileName})"
+		},
+		{
+			"label": "Create JavaScript file",
+			"type": "shell",
+			"command": "echo console.log('Atarashi Project e Youkoso!'); > ${input:fileName}.js"
+		},
+		{
+			"label": "Install Package (Global)",
+			"type": "shell",
+			"command": "npm",
+			"args": ["install", "${input:packageName}", "-g"]
+		},
+		{
+			"label": "Link Package (Local)",
+			"type": "shell",
+			"command": "npm",
+			"args": ["link", "${input:packageName}"]
+		},
+		{
+			"label": "Create Next App (TS)",
+			"type": "shell",
+			"command": "cd .. && cls && create-next-app ${workspaceFolderBasename} --example with-typescript --use-npm"
+		},
+		{
+			"label": "NPM Init",
+			"type": "shell",
+			"command": "echo console.log('Atarashi Project e Youkoso!'); > index.js",
+			"args": ["npm", "init"]
+		},
+		{
+			"label": "Run Nodemon",
+			"type": "shell",
+			"command": "nodemon",
+			"args": ["index.js"]
+		},
+		{
+			"label": "Run Build",
+			"type": "shell",
+			"command": "set DEBUG=${workspaceFolderBasename}:* & npm run build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	],
+	"inputs": [
+		{
+			"id": "htmlEngine",
+			"type": "pickString",
+			"description": "Choose HTML Engine for this Project",
+			"default": "ejs",
+			"options": ["ejs", "pug", "hbs", "hjs", "twig", "vash"]
+		},
+		{
+			"id": "packageName",
+			"type": "promptString",
+			"description": "Package Name"
+		},
+		{
+			"id": "fileName",
+			"type": "promptString",
+			"description": "File Name (no file extension) / Folder Name",
+			"default": "index"
+		},
+		{
+			"id": "projectName",
+			"type": "promptString",
+			"description": "Project Name",
+			"default": ""
+		}
+	]
+}

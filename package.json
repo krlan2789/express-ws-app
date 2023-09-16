@@ -1,0 +1,25 @@
+{
+	"name": "express-wss-app",
+	"version": "1.0.0",
+	"description": "Express - WebSocket Server  Application",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app",
+		"dev": "cls & nodemon"
+	},
+	"author": "krlan2789",
+	"license": "ISC",
+	"dependencies": {
+		"crypto": "^1.0.1",
+		"dotenv": "^16.3.1",
+		"express": "^4.17.1",
+		"pg": "^8.7.1",
+		"query-string": "^7.0.1",
+		"ws": "^8.2.3"
+	},
+	"engines": {
+		"npm": ">=8.19.4",
+		"node": ">=16.20.0"
+	}
+}
