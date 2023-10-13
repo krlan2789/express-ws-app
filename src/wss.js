@@ -18,10 +18,12 @@ module.exports = class WSS {
 			console.log("Error handler called!");
 			next(createError(404));
 		});
+		// catch 404 and forward to error handler
 
 		const server = createServer(app);
+
+		// Handle error
 		server.on("error", function (err) {
-			// Handle error
 			console.log(__dirname + `/error/${DateHelper.getCurrentDate()}.txt`);
 			writeFile(__dirname + `/error/${DateHelper.getCurrentDate()}.txt`, err.stack, (err) => {
 				if (err) {
@@ -30,6 +32,7 @@ module.exports = class WSS {
 				console.log("Error file saved");
 			});
 		});
+		// Handle error
 
 		const wss = new WebSocket.Server({ server });
 		const mapConnectedIp = new Map();
@@ -41,7 +44,9 @@ module.exports = class WSS {
 				client.send(data);
 			});
 		};
+		// Broadcast to all.
 
+		// On websocket user has connection open
 		wss.on("connection", async function connection(ws, req) {
 			try {
 				const [_path, params] = req.url.split("?");
@@ -64,11 +69,14 @@ module.exports = class WSS {
 
 				mapConnectedIp.set(token, ws);
 
+				// On websocken has error
 				ws.on("error", (err) => {
 					ErrorHandler.insert(err.name, err.message);
 					console.log(err);
 				});
+				// On websocken has error
 
+				// On websocket has nicoming message
 				ws.on("message", function message(data) {
 					if (typeof data === "string") {
 						// client sent a string
@@ -83,16 +91,20 @@ module.exports = class WSS {
 
 					RecordLogHandler.insert(data, data);
 				});
+				// On websocket has nicoming message
 
+				// On websocket user has connection closed
 				ws.on("close", function close() {
 					mapConnectedIp.delete(token);
 					console.log(`client ${token} left.`);
 					wss.broadcast(`client ${token} left.`);
 				});
+				// On websocket user has connection closed
 			} catch (e) {
 				ErrorHandler.insert(e.name, e.message);
 			}
 		});
+		// On websocket user has connection open
 
 		return server;
 	}
