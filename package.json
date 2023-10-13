@@ -6,6 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node app",
+		"start:pm2": "pm2 start app.js",
 		"dev": "cls & nodemon"
 	},
 	"author": "krlan2789",

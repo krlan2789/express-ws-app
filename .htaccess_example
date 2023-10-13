@@ -1,0 +1,7 @@
+DirectoryIndex disabled
+RewriteEngine On
+# Replace port [8765] with your port from .env
+RewriteRule ^$ http://127.0.0.1:8765/ [P,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+# Replace port [8765] with your port from .env
+RewriteRule ^(.*)$ http://127.0.0.1:8765/$1 [P,L]
