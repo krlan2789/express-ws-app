@@ -1,4 +1,4 @@
-# 1. Express WebSocket App
+# 1. Express WebSocket App Example
 
 ## 1.1. **Specs**
 
@@ -59,4 +59,17 @@
    $ npm start
    ```
 
-4. Open browser, use websocket tester tools, then fill in the url with `ws://localhost:8765?token=user_token`.
+4. Start on production mode using pm2 ([required pm2 package](https://github.com/Unitech/pm2)) :
+
+   ```console
+   $ npm start:pm2
+   ```
+
+5. Open browser, use websocket tester tools, then fill in the url with `[ws/wss]://[ip/hostname]:[port]?token=user_token`.
+
+   ```
+   Example :
+
+   HTTP  -> ws://localhost:8765?token=user1240635408404344554
+   HTTPS -> wss://localhost:8765?token=user1240635408404344554
+   ```
