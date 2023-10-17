@@ -25,12 +25,18 @@ module.exports = class WSS {
 		// Handle error
 		server.on("error", function (err) {
 			console.log(__dirname + `/error/${DateHelper.getCurrentDate()}.txt`);
-			writeFile(__dirname + `/error/${DateHelper.getCurrentDate()}.txt`, err.stack, (err) => {
-				if (err) {
-					console.log(err);
-				}
-				console.log("Error file saved");
-			});
+
+			ErrorHandler.insert(err.message, __dirname + `/error/${DateHelper.getCurrentDate()}.txt`);
+			try {
+				writeFile(__dirname + `/error/${DateHelper.getCurrentDate()}.txt`, err.stack, (err) => {
+					if (err) {
+						console.log(err);
+					}
+					console.log("Error file saved");
+				});
+			} catch (e) {
+				ErrorHandler.insert(e.name, e.message);
+			}
 		});
 		// Handle error
 
