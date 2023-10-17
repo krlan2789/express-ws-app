@@ -63,9 +63,25 @@ module.exports = class WSS {
 
 				if (!isVerified) {
 					console.log("not_verified_user: " + token);
-					ErrorHandler.insert("not_verified_user", token);
+					const errResult = ErrorHandler.insert("not_verified_user", token);
 					ws.send("you are not permitted to use this feature");
 					ws.close();
+
+					try {
+						writeFile(
+							__dirname + `/error/not_verified_user_${DateHelper.getCurrentDate()}.txt`,
+							JSON.stringify(errResult),
+							(err) => {
+								if (err) {
+									console.log(err);
+								}
+								console.log("Error file saved");
+							},
+						);
+					} catch (e) {
+						ErrorHandler.insert(e.name, e.message);
+					}
+
 					return;
 				}
 
