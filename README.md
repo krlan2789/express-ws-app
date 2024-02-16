@@ -8,15 +8,21 @@
 - NodeJS WebSocket Library `8.2.3`
 - PostgreSQL `12.14`
 
-## 1.2. **Installation**
+## 1.2. **Getting Started**
 
-1. Switch to the project directory :
+1. Clone project repository :
+
+   ```console
+   $ git clone https://github.com/krlan2789/express-ws-app.git
+   ```
+
+2. Switch to the project directory :
 
    ```console
    $ cd express-wss-app
    ```
 
-2. Install dependencies :
+3. Install dependencies :
 
    ```console
    $ npm install
