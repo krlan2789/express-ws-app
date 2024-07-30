@@ -79,3 +79,5 @@
    HTTP  -> ws://localhost:8765?token=user1240635408404344554
    HTTPS -> wss://localhost:8765?token=user1240635408404344554
    ```
+
+   Or, run `npm run test:ws` on terminal.
