@@ -82,5 +82,4 @@
 
    Or, run `npm run test:ws` on terminal.
 
-
-- Visit (this article)[https://erlankurnia.github.io/article/2/WebSocket%20Service%20on%20VPS] to run the app on VPS/Cloud hosting/etc.
+6. Visit [this article](https://erlankurnia.github.io/article/2/WebSocket%20Service%20on%20VPS) to run the app on VPS/Cloud hosting/etc.
