@@ -12,19 +12,19 @@
 
 1. Clone project repository :
 
-   ```console
+   ```shell
    $ git clone https://github.com/krlan2789/express-ws-app.git
    ```
 
 2. Switch to the project directory :
 
-   ```console
+   ```shell
    $ cd express-wss-app
    ```
 
 3. Install dependencies :
 
-   ```console
+   ```shell
    $ npm install
    or
    $ npm i
@@ -49,31 +49,31 @@
 
 1. Switch to the project directory :
 
-   ```console
+   ```shell
    $ cd express-wss-app
    ```
 
 2. Start on development mode :
 
-   ```console
+   ```shell
    $ npm run dev
    ```
 
 3. Start on production mode :
 
-   ```console
+   ```shell
    $ npm start
    ```
 
 4. Start on production mode using pm2 ([required pm2 package](https://github.com/Unitech/pm2)) :
 
-   ```console
+   ```shell
    $ npm start:pm2
    ```
 
 5. Open browser, use websocket tester tools, then fill in the url with `[ws/wss]://[ip/hostname]:[port]?token=user_token`.
 
-   ```
+   ```http
    Example :
 
    HTTP  -> ws://localhost:8765?token=user1240635408404344554
