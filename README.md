@@ -1,12 +1,10 @@
 # Building a Real-Time Application with Express and WebSocket
 
-Real-time applications are becoming increasingly popular, and WebSocket technology is at the heart of many of these systems. In this article, we will explore how to set up and run a WebSocket-based application using ExpressJS. This guide will walk you through the specifications, setup process, database configuration, and running the application.
+Real-time applications are revolutionizing the way we interact with technology, enabling instantaneous communication and updates. At the core of these systems lies WebSocket technology, which facilitates seamless two-way communication between clients and servers. In this article, we will delve into the process of building a WebSocket-based application using ExpressJS, covering everything from prerequisites to deployment.
 
----
+## Prerequisites
 
-## Specifications
-
-To get started, ensure you have the following tools and versions installed:
+Before diving into the setup, ensure you have the following tools and versions installed:
 
 - **NodeJS**: `16.20.0`
 - **NPM**: `8.19.4`
@@ -14,55 +12,51 @@ To get started, ensure you have the following tools and versions installed:
 - **NodeJS WebSocket Library**: `8.2.3`
 - **PostgreSQL**: `12.14`
 
----
+These tools form the backbone of the application, enabling efficient development and database management.
 
-## Getting Started
+## Setting Up the Project
 
-Follow these steps to set up the project:
+### Step 1: Cloning the Repository
 
-### Step 1: Clone the Repository
-
-Clone the project repository to your local machine:
+Begin by cloning the project repository to your local machine. This repository contains all the necessary files and configurations to get started:
 
 ```shell
 $ git clone https://github.com/krlan2789/express-ws-app.git
 ```
 
-### Step 2: Navigate to the Project Directory
+### Step 2: Navigating to the Project Directory
 
-Switch to the project directory:
+Once cloned, navigate to the project directory:
 
 ```shell
 $ cd express-wss-app
 ```
 
-### Step 3: Install Dependencies
+### Step 3: Installing Dependencies
 
-Install the required dependencies using NPM:
+Install the required dependencies using NPM. This ensures that all necessary packages are available for the application:
 
 ```shell
 $ npm install
 ```
 
-Alternatively, you can use the shorthand:
+Alternatively, you can use the shorthand command:
 
 ```shell
 $ npm i
 ```
 
----
-
 ## Configuring the Database
 
-To connect the application to a PostgreSQL database, follow these steps:
+To enable database connectivity, follow these steps:
 
-### Step 1: Create an Environment File
+### Step 1: Creating an Environment File
 
-Duplicate the `.env_example` file or create a new `.env` file in the project root directory.
+Duplicate the `.env_example` file or create a new `.env` file in the project root directory. This file will store your application and database settings.
 
-### Step 2: Update the Configuration
+### Step 2: Updating the Configuration
 
-Modify the `.env` file with your database and application settings:
+Edit the `.env` file with your specific database credentials and application settings:
 
 ```ini
 DB_HOST=localhost       # Database hostname or IP
@@ -74,13 +68,13 @@ DB_PASSWORD=12345678    # Database password
 CONNECTION_PORT=8765    # Node.js application port
 ```
 
----
+These configurations ensure seamless communication between the application and the PostgreSQL database.
 
 ## Running the Application
 
-Once the setup is complete, you can run the application in different modes:
+With the setup complete, you can now run the application. Choose the appropriate mode based on your requirements:
 
-### Step 1: Navigate to the Project Directory
+### Step 1: Navigating to the Project Directory
 
 Ensure you are in the project directory:
 
@@ -88,35 +82,35 @@ Ensure you are in the project directory:
 $ cd express-wss-app
 ```
 
-### Step 2: Start the Application
+### Step 2: Starting the Application
 
-- **Development Mode**:
+- **Development Mode**: Ideal for testing and debugging during development.
 
    ```shell
    $ npm run dev
    ```
 
-- **Production Mode**:
+- **Production Mode**: Suitable for deploying the application in a live environment.
 
    ```shell
    $ npm start
    ```
 
-- **Production Mode with PM2** (requires [PM2](https://github.com/Unitech/pm2)):
+- **Production Mode with PM2**: For enhanced process management, use PM2 (requires installation).
 
    ```shell
    $ npm start:pm2
    ```
 
-### Step 3: Test the WebSocket Connection
+### Step 3: Testing the WebSocket Connection
 
-Use a WebSocket testing tool and connect to the application using the following URL format:
+To verify the WebSocket functionality, use a WebSocket testing tool and connect using the following URL format:
 
 ```http
 [ws/wss]://[ip/hostname]:[port]?token=user_token
 ```
 
-#### Example:
+#### Example URLs:
 
 - **HTTP**: `ws://localhost:8765?token=user1240635408404344554`
 - **HTTPS**: `wss://localhost:8765?token=user1240635408404344554`
@@ -127,12 +121,10 @@ Alternatively, you can run the following command to test the WebSocket connectio
 $ npm run test:ws
 ```
 
----
+## Deploying the Application
 
-## Deploying to VPS or Cloud Hosting
+Deploying the application to a VPS or cloud hosting environment is straightforward. For detailed instructions, refer to [this deployment note](https://erlankurnia.github.io/note/2/WebSocket%20Service%20on%20VPS).
 
-For detailed instructions on deploying this application to a VPS or cloud hosting environment, refer to [this article](https://erlankurnia.github.io/note/2/WebSocket%20Service%20on%20VPS).
+## Conclusion
 
----
-
-By following this guide, you can quickly set up and run a WebSocket-based application using ExpressJS. This setup is ideal for building real-time features such as chat applications, live notifications, or collaborative tools.
+By following this guide, you can efficiently set up and run a WebSocket-based application using ExpressJS. This setup is perfect for building real-time features such as chat applications, live notifications, or collaborative tools. With WebSocket technology, the possibilities for creating dynamic and interactive applications are endless.
